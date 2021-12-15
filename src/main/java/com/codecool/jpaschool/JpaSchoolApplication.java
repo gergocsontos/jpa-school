@@ -1,5 +1,8 @@
 package com.codecool.jpaschool;
 
+import com.codecool.jpaschool.entity.Address;
+import com.codecool.jpaschool.entity.Student;
+import com.codecool.jpaschool.repository.AddressRepository;
 import com.codecool.jpaschool.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,6 +18,9 @@ public class JpaSchoolApplication {
     @Autowired
     private StudentRepository studentRepository;
 
+    @Autowired
+    private AddressRepository addressRepository;
+
     public static void main(String[] args) {
         SpringApplication.run(JpaSchoolApplication.class, args);
     }
@@ -22,10 +28,22 @@ public class JpaSchoolApplication {
     @Bean
     public CommandLineRunner init() {
         return args -> {
+
+
+            Address address = Address.builder()
+                    .country("Hungary")
+                    .city("Bp")
+                    .address("street 3")
+                    .zipCode(1000)
+                    .build();
+
+            addressRepository.save(address);
+
             Student student = Student.builder()
                     .email("email@email.com")
                     .name("Me")
                     .birthdate(LocalDate.now())
+                    .address(address)
                     .build();
 
             studentRepository.save(student);
