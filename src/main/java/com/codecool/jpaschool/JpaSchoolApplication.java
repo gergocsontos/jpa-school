@@ -30,20 +30,16 @@ public class JpaSchoolApplication {
         return args -> {
 
 
-            Address address = Address.builder()
-                    .country("Hungary")
-                    .city("Bp")
-                    .address("street 3")
-                    .zipCode(1000)
-                    .build();
-
-            addressRepository.save(address);
-
             Student student = Student.builder()
                     .email("email@email.com")
                     .name("Me")
                     .birthdate(LocalDate.now())
-                    .address(address)
+                    .address(Address.builder()
+                                .country("Hungary")
+                                .city("Bp")
+                                .address("street 3")
+                                .zipCode(1000)
+                                .build())
                     .build();
 
             studentRepository.save(student);

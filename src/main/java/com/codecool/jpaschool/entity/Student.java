@@ -24,7 +24,7 @@ public class Student {
     @Transient
     private long age;
 
-    @OneToOne // ONE-TO-ONE : Both Class should have the OneToOne above their pointing fields
+    @OneToOne(cascade = CascadeType.PERSIST) // ONE-TO-ONE : Both Class should have the OneToOne above their pointing fields
     private Address address;
 
 
