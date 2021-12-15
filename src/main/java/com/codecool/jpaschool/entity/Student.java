@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -27,6 +28,9 @@ public class Student {
     @OneToOne(cascade = CascadeType.PERSIST) // ONE-TO-ONE : Both Class should have the OneToOne above their pointing fields
     private Address address;
 
+    @ElementCollection //kapcsolótábla
+    @Singular
+    private List<String> phoneNumbers;
 
 }
 

@@ -40,6 +40,9 @@ public class JpaSchoolApplication {
                                 .address("street 3")
                                 .zipCode(1000)
                                 .build())
+                    .phoneNumber("55555")
+                    .phoneNumber("5555d")
+                    .phoneNumber("5555!!")
                     .build();
 
             studentRepository.save(student);
