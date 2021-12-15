@@ -32,6 +32,9 @@ public class Student {
     @Singular
     private List<String> phoneNumbers;
 
+    @ManyToOne
+    private School school;
+
 }
 
 
